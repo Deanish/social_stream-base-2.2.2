@@ -1,0 +1,50 @@
+<!-- HTML5 DOCTYPE -->
+<!DOCTYPE html>
+<html lang="<%= I18n.locale.to_s %>">
+  <head>
+    <meta charset="utf-8">
+    <title>WatchIn</title>
+    <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : t('site.current.keywords') %>" >
+    <meta name="description" content= "<%= content_for?(:description) ? yield(:description) : t('site.current.description') %>" >
+    <meta name="generator" content="Social Stream" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+
+    <script>document.write('<script src="http://' + (location.host || '${1:localhost}').split(':')[0] + ':${2:35729}/livereload.js?snipver=1"></' + 'script>')</script>
+    
+    <%= yield :headers %>
+
+    <%= favicon_link_tag "icons/favicon.ico" %>
+
+    <% if protect_against_forgery? %>
+      <%= csrf_meta_tag %>
+    <% end %>
+
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        <%= yield :javascript %>
+      })
+    </script>
+  </head>
+  
+  <body style="background-color: #f5f5f1;">
+    <div style="padding: 0px 70px;">
+      <%= render :partial => "layouts/header" %>
+      <div style="background-color: #FFF; border: 1px solid #CCCCC8; padding: 55px 10px; padding-bottom: 0px; margin-top: -12px;">
+        <%= flashy %>
+
+
+        <%= yield %>
+        <div class="push"></div>
+      
+    <%= render :partial => "layouts/footer" %>
+    </div>  </div>
+  </body>
+</html>

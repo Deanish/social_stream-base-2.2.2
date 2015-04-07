@@ -1,0 +1,36 @@
+<section id="registration"> 
+  <section class="welcome">
+    
+  </section>
+
+  <section class="registration">
+    <h3 style="text-align: center; color: #D32232;">
+      <b>Sign Up for WatchIn</b>
+    </h3>
+
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+    <div class="reg-labels">
+      <%= f.text_field :name, :class =>"form_tag", :placeholder =>"Name" %>
+      
+      <%= f.text_field :email, :class =>"form_tag", :placeholder =>"Email Address" %>
+      
+      <%= f.password_field :password, :class =>"form_tag", :id => "password", :placeholder =>"Password" %>
+      
+      <%= f.password_field :password_confirmation, :class =>"form_tag", :placeholder =>"Password Confirmation" %>
+
+      <%= f.submit t('action.accept').capitalize,:class=>"btn pull-right", :value=>"Sign Up" %>
+    </div>
+    <hr class="soften">
+    
+    Already on Watchin? <%= link_to "Sign in", "/" %>
+      
+      <% end %>
+  </section>
+</section>
+
+<div class="row">
+            <div class="col-md-6 col-offset-md-3">
+              <img src="img/signup.png" style="padding-top: 100px;">
+            </div> 
+</div>
